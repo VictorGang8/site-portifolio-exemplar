@@ -1,0 +1,102 @@
+/* ==========================================
+   WORKED WITH (Marcas, Clientes e Parceiros)
+   ========================================== */
+.worked-with {
+    position: relative;
+    padding: 10rem 2rem;
+    text-align: center;
+    background-color: var(--background);
+    color: var(--primary);
+}
+
+/* Inovação: Linha divisória em gradiente (Fade nas pontas) em vez de linha sólida */
+.worked-with::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 10%; /* Inicia um pouco afastado da borda */
+    width: 80%;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(0, 102, 255, 0.2), transparent);
+}
+
+.worked-with .title {
+    font-weight: 800;
+    font-size: 2.4rem;
+    line-height: 1.3;
+    letter-spacing: -0.5px;
+    margin-bottom: 2rem;
+}
+
+.worked-with .grid {
+    margin-top: 6rem;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 4rem 2rem;
+    
+    /* Centralização perfeita (vertical e horizontal) para logos de diferentes tamanhos */
+    align-items: center;      
+    justify-items: center;    
+    
+    max-width: 1000px; /* Evita que os logos fiquem muito espalhados em monitores ultrawide */
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Tratamento Profissional para os Logos */
+.worked-with .grid img {
+    width: 100%;
+    max-width: 14rem; /* Impede que um logo desproporcional "engula" a tela */
+    height: auto;
+    object-fit: contain;
+    
+    /* O "Pulo do Gato": Logos em cinza e meio transparentes por padrão */
+    filter: grayscale(100%) opacity(0.5);
+    transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+    cursor: pointer;
+}
+
+/* Animação e Cor ao passar o mouse */
+.worked-with .grid img:hover {
+    filter: grayscale(0%) opacity(1); /* Revela as cores originais da marca */
+    transform: scale(1.1); /* Microinteração de destaque */
+}
+
+/* Suporte Inteligente para Dark Mode */
+/* Se os logos originais forem pretos, no dark mode eles não aparecerão. O 'invert(1)' resolve isso. */
+[data-theme="dark"] .worked-with .grid img {
+    filter: grayscale(100%) opacity(0.5) invert(1) brightness(1.5);
+}
+
+[data-theme="dark"] .worked-with .grid img:hover {
+    filter: grayscale(0%) opacity(1) invert(0); 
+}
+
+/* ==========================================
+   RESPONSIVIDADE (Desktop)
+   ========================================== */
+@media (min-width: 600px) {
+    .worked-with .title {
+        font-size: 3rem;
+    }
+
+    .worked-with .grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 5rem 3rem;
+    }
+}
+
+@media (min-width: 900px) {
+    .worked-with .title {
+        font-size: 3.6rem;
+    }
+
+    .worked-with .grid {
+        grid-template-columns: repeat(4, 1fr);
+        gap: 6rem 4rem;
+    }
+    
+    .worked-with .grid img {
+        max-width: 16rem; /* Permite logos levemente maiores em telas grandes */
+    }
+}

@@ -1,0 +1,127 @@
+/* ==========================================
+   FOOTER (Rodapé Moderno e Interativo)
+   ========================================== */
+footer {
+    background-color: var(--foreground);
+    /* Fundo levemente padronizado ou gradiente escuro para dar profundidade */
+    background-image: linear-gradient(to bottom, var(--foreground), #004bb5); /* Tom mais escuro do seu azul base */
+    color: var(--primary-light);
+    padding: 8rem 2rem 4rem; /* Mais respiro no topo, menos embaixo */
+    text-align: center;
+    position: relative;
+    border-top: 1px solid rgba(255, 255, 255, 0.1); /* Linha sutil para separar do restante do site */
+}
+
+/* Animação no logo: um toque sutil de tecnologia */
+footer .logo {
+    width: 5rem; /* Um pouco maior para presença */
+    height: auto;
+    margin-bottom: 3rem;
+    transition: transform 0.5s cubic-bezier(0.25, 0.8, 0.25, 1);
+    /* Se a logo for branca/transparente, um drop-shadow cai muito bem */
+    filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.2)); 
+}
+
+footer .logo:hover {
+    transform: rotate(-10deg) scale(1.1); /* Pequena inclinada e aumento ao passar o mouse */
+}
+
+footer .title {
+    font-size: 2.4rem;
+    font-weight: 700;
+    line-height: 1.4;
+    margin-bottom: 4rem;
+    color: var(--primary-foreground); /* Título em branco puro para contraste */
+    opacity: 0.9;
+}
+
+/* Container das Redes Sociais */
+footer .social {
+    display: flex;
+    justify-content: center; /* Centraliza perfeitamente */
+    gap: 2rem; /* Substitui o space-between + width fixo, é mais responsivo e flexível */
+    max-width: 40rem;
+    margin: 0 auto 5rem;
+}
+
+/* Micro-interações nos Ícones Sociais */
+footer .social a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 5.5rem; /* Um pouco maiores para facilitar o clique no celular (Acessibilidade) */
+    height: 5.5rem;
+    border-radius: 50%;
+    border: 0.2rem solid rgba(255, 255, 255, 0.3); /* Borda semi-transparente */
+    background-color: transparent;
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1); /* Transição elástica */
+}
+
+footer .social a img {
+    width: 2.2rem;
+    height: 2.2rem;
+    transition: transform 0.3s ease; /* Anima o ícone de dentro também */
+}
+
+/* O pulo do gato: Efeito Hover avançado */
+footer .social a:hover {
+    border-color: var(--primary-foreground);
+    background-color: var(--primary-foreground);
+    transform: translateY(-8px); /* Levita bastante */
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2); /* Sombra projeta o ícone pra frente */
+}
+
+/* Se os ícones forem pretos ou coloridos, ao preencher o fundo de branco no hover, eles já terão contraste. 
+   Se os ícones originais forem brancos, você pode precisar de um 'filter: invert(1)' aqui no hover */
+footer .social a:hover img {
+    transform: scale(1.1); /* Ícone cresce junto com o fundo */
+}
+
+/* Área de Direitos Autorais e Legal */
+.footer-bottom {
+    /* Agrupei o legal e copyright para organizar melhor */
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    padding-top: 3rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    opacity: 0.7; /* Suaviza a cor para dar hierarquia ao texto */
+    transition: opacity 0.3s ease;
+}
+
+.footer-bottom:hover {
+    opacity: 1; /* Acende se o usuário parar pra ler */
+}
+
+footer .copyright {
+    font-size: 1.4rem;
+    letter-spacing: 0.5px;
+}
+
+footer .legal {
+    font-size: 1.3rem;
+}
+
+footer .legal a {
+    color: var(--primary-light);
+    text-decoration: underline;
+    text-decoration-color: transparent;
+    transition: text-decoration-color 0.3s ease;
+}
+
+footer .legal a:hover {
+    color: var(--primary-foreground);
+    text-decoration-color: var(--primary-foreground);
+}
+
+/* Responsividade para Desktop */
+@media (min-width: 768px) {
+    .footer-bottom {
+        flex-direction: row; /* Coloca os textos lado a lado */
+        justify-content: space-between;
+        align-items: center;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 3rem 2rem 0;
+    }
+}

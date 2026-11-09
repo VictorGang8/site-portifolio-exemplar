@@ -1,0 +1,174 @@
+/* ==========================================
+   TESTIMONIALS (Depoimentos & Validação)
+   ========================================== */
+.testimonials {
+    padding: 10rem 2rem;
+    text-align: center;
+    color: var(--primary);
+    position: relative;
+    background-color: rgba(0, 102, 255, 0.02); /* Fundo sutil para separar das outras seções */
+}
+
+.testimonials .title {
+    font-weight: 800;
+    font-size: 2.8rem;
+    line-height: 1.2;
+    margin-bottom: 2rem;
+    letter-spacing: -0.5px;
+}
+
+.testimonials .subtitle {
+    font-size: 1.8rem;
+    line-height: 1.6;
+    margin-bottom: 5rem;
+    color: var(--text-main);
+    opacity: 0.85;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Container do Carrossel */
+.testimonials .slider {
+    max-width: 70rem; /* Aumentado para acomodar frases longas com mais elegância */
+    overflow: hidden;
+    margin: auto;
+    position: relative;
+    padding: 1rem;
+}
+
+.testimonials .slider input {
+    display: none;
+}
+
+.testimonials .slider-area {
+    width: 200%;
+    display: flex;
+    transition: transform 0.6s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+.testimonials .slider-item {
+    width: 100%;
+    padding: 0 1.5rem;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Avatar com Borda e Sombra 3D */
+.testimonials .slider-item img {
+    width: 11rem;
+    height: 11rem;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 3rem;
+    
+    border: 0.4rem solid var(--background);
+    box-shadow: 0 10px 25px rgba(0, 102, 255, 0.2);
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.testimonials .slider-item:hover img {
+    transform: scale(1.05);
+    box-shadow: 0 15px 30px rgba(0, 102, 255, 0.3);
+}
+
+/* Texto do Depoimento com Aspas Decorativas */
+.testimonials .slider-item .description {
+    font-size: 1.9rem;
+    line-height: 1.7;
+    font-style: italic;
+    color: var(--text-main);
+    opacity: 0.9;
+    margin-bottom: 3.5rem;
+    max-width: 62rem;
+    position: relative;
+}
+
+.testimonials .slider-item .description::before {
+    content: '“';
+    font-size: 6rem;
+    position: absolute;
+    top: -3rem;
+    left: -2rem;
+    color: var(--foreground);
+    opacity: 0.15;
+    font-family: Georgia, serif;
+}
+
+.testimonials .slider-item .name {
+    font-weight: 800;
+    font-size: 2rem;
+    color: var(--primary);
+    margin-bottom: 0.5rem;
+    letter-spacing: -0.3px;
+}
+
+.testimonials .slider-item .role {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--foreground);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+/* Controles de Navegação (Pílula Dinâmica) */
+.testimonials .slider-nav {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1.2rem;
+    margin-top: 4rem;
+}
+
+.testimonials .slider-nav label {
+    display: block;
+    width: 1.4rem;
+    height: 1.4rem;
+    border-radius: 1rem;
+    cursor: pointer;
+    background-color: transparent;
+    border: 0.2rem solid var(--foreground);
+    transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+    opacity: 0.4;
+}
+
+.testimonials .slider-nav label:hover {
+    opacity: 0.8;
+}
+
+/* Lógica CSS puro de transição suave */
+#slider-1:checked ~ .slider-area {
+    transform: translateX(0%);
+}
+
+#slider-2:checked ~ .slider-area {
+    transform: translateX(-50%);
+}
+
+/* Efeito de expansão estilo 'Pílula' no indicador ativo */
+#slider-1:checked ~ .slider-nav .n1,
+#slider-2:checked ~ .slider-nav .n2 {
+    width: 3.5rem;
+    background-color: var(--foreground);
+    border-color: var(--foreground);
+    opacity: 1;
+}
+
+/* ==========================================
+   RESPONSIVIDADE (Desktop)
+   ========================================== */
+@media (min-width: 768px) {
+    .testimonials .title {
+        font-size: 3.6rem;
+    }
+
+    .testimonials .subtitle {
+        font-size: 2rem;
+    }
+
+    .testimonials .slider-item .description {
+        font-size: 2.1rem;
+    }
+}

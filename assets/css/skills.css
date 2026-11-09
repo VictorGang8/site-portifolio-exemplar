@@ -1,0 +1,144 @@
+/* ==========================================
+   SKILLS SECTION (Dashboard de Competências)
+   ========================================== */
+.skills-overlay {
+    background-color: var(--foreground);
+    height: 12rem; /* Aumentado para dar um encaixe flutuante mais elegante */
+    position: relative;
+}
+
+.skills .container {
+    margin-top: -12rem;
+    position: relative;
+    z-index: 10; /* Mantém o cartão acima da camada de overlay */
+}
+
+.skills .grid {
+    background-color: var(--background);
+    margin: 0 2rem;
+    border-radius: 2rem;
+    display: grid;
+    grid-template-columns: 1fr;
+    
+    /* Inovação: Sombra multicamada e borda sutil para destaque profissional */
+    box-shadow: 
+        0 20px 40px rgba(0, 0, 0, 0.08), 
+        0 1px 3px rgba(0, 0, 0, 0.05);
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    overflow: hidden; /* Garante que as bordas internas acompanhem os cantos arredondados */
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+/* Suporte para quando o tema escuro estiver ativo */
+[data-theme="dark"] .skills .grid {
+    border-color: rgba(255, 255, 255, 0.1);
+}
+
+.skills .skill {
+    text-align: center;
+    border-right: 0;
+    border-bottom: 1px solid var(--primary-light);
+    color: var(--primary);
+    padding: 6rem 3rem;
+    position: relative;
+    transition: transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1), background-color 0.3s ease;
+}
+
+/* Remove a borda do último item no mobile */
+.skills .skill:last-child {
+    border-bottom: 0;
+}
+
+/* Interação ao passar o mouse em cada coluna de skill */
+.skills .skill:hover {
+    background-color: rgba(0, 102, 255, 0.02); /* Ilumina levemente a coluna */
+}
+
+/* ==========================================
+   SKILL ITEM (Ícones e Conteúdo)
+   ========================================== */
+.skill-icon {
+    width: 8rem;
+    height: 8rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    
+    /* Inovação: Gradiente moderno e sombra com brilho no ícone */
+    background: linear-gradient(135deg, var(--secondary) 0%, var(--foreground) 100%);
+    color: var(--secondary-foreground);
+    margin: 0 auto 3rem auto;
+    
+    box-shadow: 0 10px 20px rgba(0, 102, 255, 0.25);
+    transition: transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1), box-shadow 0.4s ease;
+}
+
+.skill-icon img {
+    width: 3.8rem;
+    height: 3.8rem;
+    object-fit: contain;
+    /* Torna o ícone branco caso seja um SVG simples */
+    filter: brightness(0) invert(1); 
+}
+
+/* Efeito do Ícone no Hover da Coluna */
+.skills .skill:hover .skill-icon {
+    transform: translateY(-6px) scale(1.08) rotate(5deg);
+    box-shadow: 0 15px 30px rgba(0, 102, 255, 0.4);
+}
+
+.skill-title {
+    font-weight: 800;
+    font-size: 2.2rem;
+    margin-bottom: 2rem;
+    color: var(--primary);
+    letter-spacing: -0.5px;
+}
+
+.skill-desc {
+    font-size: 1.6rem;
+    line-height: 1.6;
+    color: var(--text-main);
+    opacity: 0.85;
+    margin-bottom: 3.5rem;
+}
+
+.skill-sub {
+    font-weight: 700;
+    font-size: 1.6rem;
+    color: var(--foreground);
+    margin-bottom: 1.5rem;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+}
+
+.skill-txt {
+    font-size: 1.6rem;
+    line-height: 1.7;
+    color: var(--text-main);
+    opacity: 0.9;
+}
+
+/* ==========================================
+   RESPONSIVIDADE (Desktop & Tablets)
+   ========================================== */
+@media (min-width: 768px) {
+    .skills .grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .skills .skill {
+        border-bottom: 0;
+        border-right: 1px solid rgba(0, 0, 0, 0.08);
+    }
+
+    /* Ajuste para tema escuro no Desktop */
+    [data-theme="dark"] .skills .skill {
+        border-right-color: rgba(255, 255, 255, 0.08);
+    }
+
+    .skills .skill:last-child {
+        border-right: 0;
+    }
+}

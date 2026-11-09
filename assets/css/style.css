@@ -1,0 +1,740 @@
+/* ==========================================================================
+   VARIÁVEIS
+   ========================================================================== */
+:root {
+    --background: #fff;
+    --foreground: #6e07f3;
+    --primary: #141c3a;
+    --primary-light: #cdd3eb;
+    --primary-foreground: #fff;
+    --secondary: #5be8b9;
+    --secondary-foreground: #141c3a;
+
+    --radius: 1.5rem;
+    --transition: 0.2s ease;
+    --focus-ring: 0.3rem solid var(--secondary);
+}
+
+/* ==========================================================================
+   RESET E BASE
+   ========================================================================== */
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+ul,
+ol {
+    list-style: none;
+}
+
+html {
+    font-family: system-ui, -apple-system, "Segoe UI", Roboto, Arial, Helvetica, sans-serif;
+    font-size: 62.5%; /* 1rem = 10px */
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+}
+
+body {
+    font-size: 1.6rem; /* evita texto minúsculo onde não há font-size definido */
+    line-height: 1.5;
+}
+
+img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+}
+
+a:focus-visible,
+button:focus-visible,
+.button:focus-visible,
+.menu-opener:focus-visible {
+    outline: var(--focus-ring);
+    outline-offset: 0.3rem;
+}
+
+.container {
+    width: 100%;
+    max-width: 1200px;
+    margin-inline: auto;
+}
+
+/* ==========================================================================
+   BOTÃO
+   ========================================================================== */
+.button {
+    display: inline-block;
+    border: 0.2rem solid var(--foreground);
+    color: var(--foreground);
+    border-radius: var(--radius);
+    padding: 0.8rem 1.5rem;
+    text-decoration: none;
+    transition: background-color var(--transition), color var(--transition);
+}
+
+.button:hover {
+    background-color: var(--foreground);
+    color: var(--primary-foreground);
+}
+
+/* ==========================================================================
+   HEADER
+   ========================================================================== */
+header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.navbar {
+    flex: 1;
+    width: 100%;
+    padding: 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo img {
+    width: 3.2rem;
+    height: 3.2rem;
+}
+
+/* Dica: use <button class="menu-opener" aria-label="Abrir menu"> no HTML */
+.menu-opener {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+    width: 4.4rem; /* área de toque mínima recomendada */
+    height: 4.4rem;
+    background: none;
+    border: 0;
+    cursor: pointer;
+}
+
+.menu-opener span {
+    display: block;
+    width: 2.2rem;
+    height: 0.2rem;
+    border-radius: 0.1rem;
+    background-color: var(--primary);
+}
+
+header nav {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+    padding: 2rem;
+}
+
+header nav.opened {
+    display: flex;
+}
+
+header nav a {
+    font-size: 1.4rem;
+    text-decoration: none;
+    color: var(--primary);
+}
+
+header nav a:hover {
+    text-decoration: underline;
+}
+
+/* ==========================================================================
+   HERO
+   ========================================================================== */
+.hero {
+    text-align: center;
+    padding: 3rem 1rem 0;
+}
+
+.hero h1 {
+    font-weight: bold;
+    font-size: 2.5rem;
+    margin-bottom: 2rem;
+}
+
+.hero h2 {
+    font-weight: normal;
+    font-size: 1.5rem;
+    margin-bottom: 3rem;
+}
+
+.hero-avatar {
+    width: 12rem;
+    margin: 0 auto 5rem;
+}
+
+.hero-device {
+    width: 100%;
+    max-width: 80rem;
+    margin-inline: auto;
+}
+
+/* ==========================================================================
+   INTRO
+   ========================================================================== */
+.intro {
+    background-color: var(--foreground);
+    color: var(--primary-foreground);
+    padding: 5rem 0;
+    text-align: center;
+}
+
+.intro .box {
+    max-width: 60rem;
+    margin: auto;
+    padding: 2rem;
+}
+
+.intro .title {
+    font-weight: bold;
+    font-size: 2.5rem;
+    margin-bottom: 3rem;
+}
+
+.intro .subtitle {
+    font-size: 1.8rem;
+    line-height: 3rem;
+}
+
+/* ==========================================================================
+   TRABALHOS RECENTES
+   ========================================================================== */
+.recent-work {
+    text-align: center;
+    color: var(--primary);
+    padding: 0 2rem;
+}
+
+.recent-work .title {
+    font-weight: bold;
+    font-size: 2.5rem;
+    margin-top: 8rem;
+    margin-bottom: 3.5rem;
+}
+
+.recent-work .subtitle {
+    font-size: 2rem;
+    line-height: 3rem;
+}
+
+.recent-work .subtitle a {
+    color: var(--foreground);
+    text-decoration: none;
+}
+
+.recent-work .subtitle a:hover {
+    text-decoration: underline;
+}
+
+.recent-work .grid {
+    margin-top: 5rem;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+}
+
+.recent-work .item {
+    position: relative;
+    overflow: hidden;
+    border-radius: var(--radius);
+}
+
+.recent-work .item .image {
+    width: 100%;
+    transition: transform 0.5s ease;
+}
+
+.recent-work .item .overlay {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
+    background-color: var(--primary);
+    color: var(--primary-foreground);
+    font-size: 1.9rem;
+    line-height: 2.5rem;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+}
+
+.recent-work .item .overlay .button {
+    margin-top: 2rem;
+    color: var(--primary-foreground);
+    border-color: var(--primary-foreground);
+}
+
+.recent-work .item .overlay .button:hover {
+    background-color: var(--primary-foreground);
+    color: var(--primary);
+}
+
+/* focus-within: quem navega por teclado também vê o overlay */
+.recent-work .item:hover .image,
+.recent-work .item:focus-within .image {
+    transform: scale(1.2);
+}
+
+.recent-work .item:hover .overlay,
+.recent-work .item:focus-within .overlay {
+    opacity: 1;
+}
+
+.recent-work .seemore {
+    display: inline-block;
+    margin: 6rem 0;
+    font-size: 2rem;
+}
+
+/* ==========================================================================
+   HABILIDADES
+   ========================================================================== */
+.skills-overlay {
+    background-color: var(--foreground);
+    height: 10rem;
+}
+
+.skills .container {
+    margin-top: -10rem;
+}
+
+.skills .grid {
+    background-color: var(--background);
+    margin: 0 2rem;
+    border-radius: var(--radius);
+    display: grid;
+    grid-template-columns: 1fr;
+    box-shadow: 0 3px 5px var(--primary-light);
+}
+
+.skills .skill {
+    text-align: center;
+    border-bottom: 1px solid var(--primary-light);
+    color: var(--primary);
+    padding: 5rem 2rem;
+}
+
+.skills .skill:last-child {
+    border-bottom: 0;
+}
+
+.skill-icon {
+    width: 7rem;
+    height: 7rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    background-color: var(--secondary);
+    color: var(--secondary-foreground);
+    margin: auto;
+}
+
+.skill-icon img {
+    width: 4rem;
+    height: 4rem;
+}
+
+.skill-title {
+    font-weight: bold;
+    font-size: 2rem;
+    margin: 3rem 0;
+}
+
+.skill-desc,
+.skill-txt {
+    font-size: 1.7rem;
+    line-height: 2.5rem;
+}
+
+.skill-sub {
+    margin-top: 5rem;
+    margin-bottom: 1rem;
+    font-size: 1.7rem;
+    color: var(--foreground);
+}
+
+/* ==========================================================================
+   DEPOIMENTOS (slider só com CSS)
+   Para adicionar slides: aumente --slides e crie um novo bloco
+   "#slider-N:checked ~ .slider-area { --index: N-1; }" mais abaixo.
+   ========================================================================== */
+.testimonials {
+    padding: 8rem 2rem;
+    text-align: center;
+    color: var(--primary);
+}
+
+.testimonials .title {
+    font-weight: bold;
+    font-size: 2.5rem;
+    line-height: 3rem;
+    margin-bottom: 3rem;
+}
+
+.testimonials .subtitle {
+    font-size: 2rem;
+    line-height: 2.5rem;
+    margin-bottom: 4rem;
+}
+
+.testimonials .slider {
+    --slides: 2;
+    position: relative;
+    max-width: 50rem;
+    margin: auto;
+    overflow: hidden;
+}
+
+/* Escondido visualmente, mas ainda focável pelo teclado */
+.testimonials .slider input {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+}
+
+.testimonials .slider-area {
+    --index: 0;
+    display: flex;
+    width: calc(var(--slides) * 100%);
+    transform: translateX(calc(var(--index) * -100% / var(--slides)));
+    transition: transform 0.5s ease;
+}
+
+.testimonials .slider-item {
+    flex: 1 1 0;
+    min-width: 0;
+}
+
+.testimonials .slider-item img {
+    width: 10rem;
+    height: 10rem;
+    margin: 0 auto 4rem;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.testimonials .slider-item .description {
+    font-size: 2rem;
+    line-height: 3.3rem;
+    margin-bottom: 4rem;
+}
+
+.testimonials .slider-item .name {
+    font-weight: bold;
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+}
+
+.testimonials .slider-item .role {
+    font-size: 1.7rem;
+}
+
+.testimonials .slider-nav {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin-top: 4rem;
+}
+
+.testimonials .slider-nav label {
+    display: block;
+    width: 2rem;
+    height: 2rem;
+    border-radius: 50%;
+    cursor: pointer;
+    border: 0.2rem solid var(--primary-light);
+    transition: background-color 0.5s ease;
+}
+
+#slider-1:checked ~ .slider-area { --index: 0; }
+#slider-2:checked ~ .slider-area { --index: 1; }
+#slider-3:checked ~ .slider-area { --index: 2; }
+#slider-4:checked ~ .slider-area { --index: 3; }
+
+#slider-1:checked ~ .slider-nav .n1,
+#slider-2:checked ~ .slider-nav .n2,
+#slider-3:checked ~ .slider-nav .n3,
+#slider-4:checked ~ .slider-nav .n4 {
+    background-color: var(--foreground);
+}
+
+/* Indicador de foco para navegação por teclado */
+#slider-1:focus-visible ~ .slider-nav .n1,
+#slider-2:focus-visible ~ .slider-nav .n2,
+#slider-3:focus-visible ~ .slider-nav .n3,
+#slider-4:focus-visible ~ .slider-nav .n4 {
+    outline: var(--focus-ring);
+    outline-color: var(--foreground);
+    outline-offset: 0.3rem;
+}
+
+/* ==========================================================================
+   TRABALHEI COM
+   ========================================================================== */
+.worked-with {
+    border-top: 0.1rem solid var(--primary-light);
+    padding: 8rem 2rem;
+    text-align: center;
+    color: var(--primary);
+}
+
+.worked-with .title {
+    font-weight: bold;
+    font-size: 2rem;
+    line-height: 2.5rem;
+}
+
+.worked-with .grid {
+    margin-top: 4rem;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+}
+
+.worked-with .grid img {
+    width: 100%;
+}
+
+/* ==========================================================================
+   CTA
+   ========================================================================== */
+.cta {
+    background-color: var(--foreground);
+}
+
+.cta .overlay {
+    background-color: var(--background);
+    height: 6rem;
+}
+
+.cta .container {
+    margin-top: -6rem;
+}
+
+.cta .area {
+    margin: 0 2rem;
+    padding: 4rem;
+    background-color: var(--primary);
+    color: var(--primary-foreground);
+    border-radius: var(--radius);
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    gap: 4rem;
+    align-items: center;
+    box-shadow: 0 5px 5px rgba(0, 0, 0, 0.5);
+}
+
+.cta .area-side {
+    flex: 1;
+}
+
+.cta .title {
+    font-weight: bold;
+    font-size: 3rem;
+}
+
+.cta .subtitle {
+    font-size: 1.8rem;
+    line-height: 2.5rem;
+}
+
+.cta .button {
+    font-size: 2rem;
+    color: var(--primary-foreground);
+    border-color: var(--primary-foreground);
+}
+
+.cta .button:hover {
+    background-color: var(--primary-foreground);
+    color: var(--primary);
+}
+
+/* ==========================================================================
+   COLABORAÇÃO
+   ========================================================================== */
+.collab {
+    background-color: var(--foreground);
+    color: var(--primary-foreground);
+    padding: 8rem 2rem;
+    text-align: center;
+}
+
+.collab .title {
+    font-weight: bold;
+    font-size: 2rem;
+    line-height: 2.5rem;
+    margin-bottom: 3rem;
+}
+
+.collab .subtitle {
+    font-size: 1.7rem;
+    line-height: 2.2rem;
+    margin-bottom: 3rem;
+}
+
+.collab .button {
+    border-color: var(--background);
+    color: var(--background);
+    font-size: 2rem;
+}
+
+.collab .button:hover {
+    background-color: var(--background);
+    color: var(--foreground);
+}
+
+/* ==========================================================================
+   FOOTER
+   ========================================================================== */
+footer {
+    background-color: var(--foreground);
+    color: var(--primary-light);
+    padding: 6rem 2rem;
+    text-align: center;
+}
+
+footer .logo {
+    width: 4rem;
+    margin: 0 auto 4rem;
+}
+
+footer .title {
+    font-size: 2.2rem;
+    line-height: 3rem;
+    margin-bottom: 4rem;
+}
+
+footer .social {
+    display: flex;
+    justify-content: space-between;
+    max-width: 40rem;
+    margin: 0 auto 4rem;
+}
+
+footer .social a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 5rem;
+    height: 5rem;
+    border-radius: 50%;
+    border: 0.2rem solid var(--primary-light);
+    transition: opacity var(--transition);
+}
+
+footer .social a img {
+    width: 2rem;
+    height: 2rem;
+}
+
+footer .social a:hover {
+    opacity: 0.8;
+}
+
+footer .copyright {
+    font-size: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+footer .legal {
+    font-size: 1.5rem;
+}
+
+/* ==========================================================================
+   RESPONSIVO
+   ========================================================================== */
+@media (min-width: 600px) {
+    header {
+        flex-direction: row;
+    }
+
+    .menu-opener {
+        display: none;
+    }
+
+    header nav {
+        display: flex;
+        flex-direction: row;
+    }
+
+    .hero h1 { font-size: 4rem; }
+    .hero h2 { font-size: 2rem; }
+    .hero-avatar { width: 20rem; }
+
+    .intro .title { font-size: 3rem; }
+
+    .recent-work .title { font-size: 3.5rem; }
+    .recent-work .grid { grid-template-columns: repeat(2, 1fr); }
+
+    .skills .grid { grid-template-columns: repeat(3, 1fr); }
+
+    .skills .skill {
+        border-bottom: 0;
+        border-right: 1px solid var(--primary-light);
+    }
+
+    .skills .skill:last-child {
+        border-right: 0;
+    }
+
+    .worked-with .title {
+        font-size: 3.5rem;
+        line-height: 4rem;
+    }
+
+    .worked-with .grid { grid-template-columns: repeat(3, 1fr); }
+
+    .collab .title {
+        font-size: 3rem;
+        line-height: 3.5rem;
+    }
+
+    .collab .subtitle {
+        font-size: 2rem;
+        line-height: 2.5rem;
+    }
+}
+
+@media (min-width: 900px) {
+    .recent-work .grid { grid-template-columns: repeat(3, 1fr); }
+    .worked-with .grid { grid-template-columns: repeat(4, 1fr); }
+    .cta .area { flex-direction: row; }
+}
+
+/* ==========================================================================
+   ACESSIBILIDADE: reduz animações para quem prefere
+   ========================================================================== */
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+
+    *,
+    *::before,
+    *::after {
+        transition-duration: 0.01ms !important;
+    }
+
+    .recent-work .item:hover .image,
+    .recent-work .item:focus-within .image {
+        transform: none;
+    }
+}

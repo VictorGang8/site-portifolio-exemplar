@@ -1,0 +1,139 @@
+/* ==========================================
+   HERO SECTION (Apresentação Principal)
+   ========================================== */
+.hero {
+    text-align: center;
+    /* Aumentei o padding superior para compensar o header fixo de vidro que criamos antes */
+    padding: 12rem 2rem 5rem 2rem; 
+    position: relative;
+    overflow: hidden; /* Evita que os efeitos de fundo criem barra de rolagem */
+}
+
+/* Inovação: Luz de fundo sutil para dar profundidade (Glow effect) */
+.hero::before {
+    content: '';
+    position: absolute;
+    top: -10%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60vw;
+    height: 60vw;
+    background: radial-gradient(circle, rgba(0, 102, 255, 0.08) 0%, transparent 70%);
+    z-index: -1;
+    pointer-events: none;
+}
+
+/* Animação base para os elementos entrarem suavemente na tela */
+.hero > * {
+    animation: fadeInUp 0.8s ease-out forwards;
+    opacity: 0;
+    transform: translateY(20px);
+}
+
+.hero h1 {
+    font-weight: 800;
+    font-size: 3.2rem;
+    line-height: 1.1;
+    margin-bottom: 2rem;
+    letter-spacing: -1px;
+    
+    /* Inovação: Texto com Gradiente (Muito usado em sites Tech modernos como Apple e Vercel) */
+    background: linear-gradient(to right, var(--primary), var(--foreground));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    
+    /* Atraso na animação para criar um efeito de cascata (Stagger) */
+    animation-delay: 0.1s;
+}
+
+.hero h2 {
+    font-weight: 400;
+    font-size: 1.8rem;
+    line-height: 1.5;
+    margin-bottom: 4rem;
+    color: var(--primary);
+    opacity: 0.8; /* Dá hierarquia visual, deixando o h1 brilhar mais */
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+    
+    animation-delay: 0.3s;
+}
+
+/* Avatar do Perfil */
+.hero-avatar {
+    display: block;
+    width: 14rem;
+    height: 14rem; /* Força ser um quadrado perfeito para o border-radius funcionar bem */
+    margin: 0 auto 4rem auto;
+    object-fit: cover; /* Garante que a foto não distorça */
+    border-radius: 50%; /* Deixa a foto perfeitamente redonda */
+    
+    /* Inovação: Borda dupla e sombra colorida */
+    border: 0.4rem solid var(--background);
+    box-shadow: 0 0 0 0.3rem var(--foreground), 0 15px 25px rgba(0, 102, 255, 0.2);
+    
+    animation-delay: 0.5s;
+    transition: transform 0.3s ease;
+}
+
+.hero-avatar:hover {
+    transform: scale(1.05) rotate(3deg); /* Pequena interação ao passar o mouse na sua foto */
+}
+
+/* Mockup do Dispositivo/Projeto */
+.hero-device {
+    display: block;
+    width: 100%;
+    max-width: 80rem;
+    height: auto;
+    margin: 0 auto;
+    border-radius: 1rem;
+    
+    /* Inovação: Animação flutuante contínua para o dispositivo não parecer estático */
+    animation: fadeInUp 0.8s ease-out 0.7s forwards, floatDevice 6s ease-in-out infinite 1.5s;
+    
+    /* Sombra realista embaixo do mockup */
+    filter: drop-shadow(0 20px 30px rgba(0, 0, 0, 0.15));
+}
+
+/* ==========================================
+   KEYFRAMES (Animações)
+   ========================================== */
+/* Animação de entrada (de baixo para cima apagado -> visível) */
+@keyframes fadeInUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Animação de flutuação suave para o dispositivo (levita para cima e para baixo) */
+@keyframes floatDevice {
+    0% { transform: translateY(0); }
+    50% { transform: translateY(-15px); }
+    100% { transform: translateY(0); }
+}
+
+/* ==========================================
+   RESPONSIVIDADE (Desktop)
+   ========================================== */
+@media (min-width: 768px) {
+    .hero {
+        padding-top: 15rem; /* Mais espaço no desktop */
+    }
+
+    .hero h1 {
+        font-size: 5.5rem; /* Título bem grande e impactante */
+    }
+
+    .hero h2 {
+        font-size: 2.2rem;
+    }
+
+    .hero-avatar {
+        width: 18rem;
+        height: 18rem;
+    }
+}

@@ -1,0 +1,171 @@
+/* ==========================================
+   HEADER & NAVBAR (Estrutura principal)
+   ========================================== */
+header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative; /* Importante para o menu mobile flutuar abaixo dele */
+}
+
+.navbar {
+    width: 100%;
+    padding: 1.5rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center; /* Garante que logo e botão fiquem alinhados no meio */
+}
+
+.logo img {
+    width: 4rem; /* Um pouco maior para melhor leitura */
+    height: auto;
+    transition: transform 0.3s ease;
+}
+
+.logo img:hover {
+    transform: scale(1.05);
+}
+
+/* ==========================================
+   MENU HAMBÚRGUER (Mobile)
+   ========================================== */
+.menu-opener {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 0.6rem; /* Espaçamento levemente maior */
+    width: 4rem;
+    height: 4rem;
+    cursor: pointer;
+    background: transparent;
+    border: none; /* Reseta o estilo padrão do <button> que colocamos no HTML */
+    z-index: 101; /* Garante que fique acima de outros elementos */
+}
+
+.menu-opener span {
+    display: block;
+    width: 2.5rem;
+    height: 0.2rem; /* Linha um pouco mais espessa */
+    background-color: var(--primary);
+    border-radius: 2px;
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1); /* Transição suave */
+}
+
+/* Efeito Hover sutil no botão do menu */
+.menu-opener:hover span {
+    background-color: var(--foreground);
+}
+
+/* ==========================================
+   NAVEGAÇÃO MOBILE (Menu Dropdown com Vidro)
+   ========================================== */
+header nav {
+    /* Em vez de display: none/flex, usamos position e opacity para animar suavemente */
+    position: absolute;
+    top: 100%; /* Fixa exatamente abaixo do header */
+    left: 0;
+    width: 100%;
+    background-color: var(--header-bg); /* Puxa a cor do efeito vidro */
+    backdrop-filter: blur(12px); /* Efeito vidro também no menu aberto */
+    -webkit-backdrop-filter: blur(12px);
+    
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 3rem;
+    padding: 3rem 2rem;
+    
+    /* Configuração da animação de abrir/fechar */
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-15px); /* Começa levemente para cima */
+    transition: all 0.3s ease;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+}
+
+/* Classe acionada pelo seu JavaScript */
+header nav.opened {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0); /* Desliza para a posição original */
+}
+
+/* ==========================================
+   LINKS DE NAVEGAÇÃO & EFEITOS
+   ========================================== */
+header nav a {
+    font-size: 1.6rem;
+    font-weight: 500;
+    text-decoration: none;
+    color: var(--primary);
+    position: relative; /* Necessário para a linha de hover funcionar */
+    transition: color 0.3s ease;
+}
+
+/* Exceção para o botão de contato dentro do nav (para não aplicar o underline nele) */
+header nav a:not(.button) {
+    padding: 0.5rem 0;
+}
+
+header nav a:not(.button):hover {
+    color: var(--foreground);
+}
+
+/* Efeito de Underline animado (Inovação) */
+header nav a:not(.button)::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: var(--foreground);
+    transition: width 0.3s ease-out; /* A linha cresce suavemente */
+}
+
+header nav a:not(.button):hover::after {
+    width: 100%; /* Preenche a largura do link ao passar o mouse */
+}
+
+/* ==========================================
+   RESPONSIVIDADE (Desktop)
+   ========================================== */
+/* Usando min-width: 768px (padrão de mercado para tablets/desktop) */
+@media (min-width: 768px) {
+    header {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0 2rem;
+    }
+
+    .navbar {
+        width: auto;
+        padding: 0;
+    }
+
+    .menu-opener {
+        display: none; /* Esconde o botão hambúrguer */
+    }
+
+    header nav {
+        /* Restaura o menu para o padrão Desktop */
+        position: relative;
+        top: auto;
+        left: auto;
+        width: auto;
+        background-color: transparent;
+        backdrop-filter: none;
+        box-shadow: none;
+        
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
+        padding: 0;
+        gap: 3rem;
+    }
+}
